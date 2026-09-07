@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>عظماء من التاريخ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>عظماء من التاريخ</h1>
+    <div id="user-display" class="hidden">
+      الأسم: <strong id="current-user-name"></strong> | 
+      <button id="logout-btn">تسجيل الخروج</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- شاشة تسجيل الدخول -->
+    <section id="auth-section" class="card">
+      <h2>تسجيل الدخول</h2>
+      <p>اختر اسمك من القائمة وأدخل كلمة المرور للمتابعة:</p>
+      
+      <div class="form-container">
+        <label for="username-select">اسم الطالب:</label>
+        <select id="username-select">
+          <option value="">جاري تحميل الأسماء...</option>
+        </select>
+
+        <label for="password-input">كلمة المرور:</label>
+        <input type="password" id="password-input" placeholder="أدخل كلمة المرور...">
+
+        <div id="login-error-msg" class="alert-box error hidden"></div>
+        <button id="login-btn">دخول</button>
+      </div>
+    </section>
+
+    <!-- شاشة قائمة الأيام -->
+    <section id="dashboard-section" class="card hidden">
+      <h2>الأيام</h2>
+      <div id="loading-spinner" class="spinner">جاري تحميل البيانات...</div>
+      <div id="days-list" class="days-grid"></div>
+    </section>
+
+    <!-- شاشة الدرس والاختبار -->
+    <section id="lesson-section" class="card hidden">
+      <button id="back-to-dashboard-btn" class="btn-secondary">← العودة لقائمة الأيام</button>
+      <h2 id="lesson-title"></h2>
+
+      <div class="video-wrapper">
+        <video id="course-video" preload="metadata">
+          متصفحك لا يدعم مشغل الفيديو.
+        </video>
+        <div class="custom-controls">
+          <button id="play-pause-btn">تشغيل</button>
+          <span id="time-display">00:00 / 00:00</span>
+          <span id="lock-badge">التقديم للأمام مغلق</span>
+        </div>
+      </div>
+
+      <div id="already-tested-msg" class="alert-box info hidden"></div>
+
+      <!-- قسم الاختبار -->
+      <div id="quiz-container" class="hidden">
+        <div class="quiz-header">
+          <h3>اختبار اليوم</h3>
+          <p>أجب عن الأسئلة التالية لتسجيل النتيجة:</p>
+        </div>
+        <form id="quiz-form">
+          <div id="questions-wrapper"></div>
+          <button type="submit" id="submit-quiz-btn">إرسال الإجابات</button>
+        </form>
+      </div>
+
+      <div id="result-box" class="alert-box success hidden"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
